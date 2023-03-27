@@ -7,21 +7,25 @@
     </label>
 
 <label> Choose a category:
- <select name="category">
-<option value=""> {{this.name}}</option>
- </select>
-
+   <select name="category">
+    <option value="Creative">Creative</option>
+    <option value="Technical">Technical</option>
+    <option value="Communication">Communication</option>
+    <option value="Lifestyle">Lifestyle</option>
+    <option value="Professional">Professional</option>
+  </select>
 </label>
 
 <label> Your Location:
    <input type="text" name="title" />
 </label>
 
+<br>
 
 Upload a photo:
-</form>
+  <input type="file" id="{{this.photoURL}}" name="photoURL">
+  <br>
 
-<form action="/action_page.php" method="POST" enctype="multipart/form-data">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit" value="Upload">
+ <input type="submit" value="Create">
+
 </form>

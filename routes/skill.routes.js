@@ -74,7 +74,7 @@ router.get('skills/:skillId/edit', (req, res, next) =>{
 
     skill.findById(skillId)
      .then(skillToEdit => {
-        res.rednder('skills/skill-edit.hbs', { skill: skillToEdit });
+        res.render('skills/skill-edit.hbs', { skill: skillToEdit });
      })
      .catch(error => next(error));
 });

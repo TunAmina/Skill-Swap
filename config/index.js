@@ -65,6 +65,7 @@ module.exports = (app) => {
 };
 
 const cloudinary = require('cloudinary').v2;
+
 // Configuration 
 cloudinary.config({
   cloud_name: "dv9yubte7",
