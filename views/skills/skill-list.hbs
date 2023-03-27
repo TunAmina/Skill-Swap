@@ -4,11 +4,11 @@
     <section class="skills">
         <p>
             Your skill: {{this.title}} <br />
-            Category: {{this.category.type}} <br />
-            Location :  {{this.location}}
+            Category: {{this.category}} <br />
+            Location :  {{this.location}} <br />
             <a href="/skills/{{this._id}}/edit">Edit</a>
         </p>
-        <img src="{{this.myFile}}">
+        <img src="{{this.photoURL}}">
         
         <form action="/skills/{{_id}}/delete" method="POST">
             <button>Delete</button>

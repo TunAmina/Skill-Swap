@@ -8,25 +8,25 @@ const skills = [
     {
         title: "Teaching German",
         category:"Communication",
-       photoURL: "../public/images/german-language.jpeg",
+       photoURL: "https://res.cloudinary.com/dv9yubte7/image/upload/v1679947029/german-language.jpg",
        location: "Berlin"
     },
     {
         title: "Yoga Class",
         category:"Lifestyle",
-       photoURL: "../public/images/yoga.jpeg",
+       photoURL: "https://res.cloudinary.com/dv9yubte7/image/upload/v1679947029/yoga.jpg",
        location: "Utrecht"
     },
     {
         title: "Painting",
         category:"Creative",
-       photoURL: "../public/images/painting.jpeg",
+       photoURL: "https://res.cloudinary.com/dv9yubte7/image/upload/v1679947029/painting.jpg",
        location: "London"
     },
     {
         title: "Cooking ",
         category:"Lifestyle",
-       photoURL: "../public/images/cooking.jpg",
+       photoURL: "https://res.cloudinary.com/dv9yubte7/image/upload/v1679947111/cooking.webp",
        location: "Paris"
     }
 ];
@@ -39,7 +39,7 @@ mongoose
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
 
-   //return Skill.deleteMany({}); //WARNING: this will delete all skill in your DB !!
+  //return Skill.deleteMany({}); //WARNING: this will delete all skill in your DB !!
 
   })
   .then( (response) => {
