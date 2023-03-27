@@ -1,0 +1,27 @@
+<h2>Create your skill</h2>
+
+<form method="POST" action="/skills">
+
+   <label> Type your skill:
+        <input type="text" name="title" />
+    </label>
+
+<label> Choose a category:
+ <select name="category">
+<option value=""> {{this.name}}</option>
+ </select>
+
+</label>
+
+<label> Your Location:
+   <input type="text" name="title" />
+</label>
+
+
+Upload a photo:
+</form>
+
+<form action="/action_page.php" method="POST" enctype="multipart/form-data">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit" value="Upload">
+</form>

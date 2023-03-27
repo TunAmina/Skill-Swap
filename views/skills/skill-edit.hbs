@@ -1,0 +1,26 @@
+<h2>Edit the skill: {{skill.title}}</h2>
+
+<form action="/skills/{{skill._id}}/edit" method="post">
+  <label> Title:
+    <input type="text" name="title" value="{{skill.title}}" />
+  </label>
+
+  <label> Category:
+    <select name="category">
+      {{#each categories}}
+        <option value={{this._id}}>{{this.type}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label> Location:
+    <input type="text" name="location" value="{{skill.location}}" />
+  </label>
+
+  <button>Save changes</button>
+</form>
+
+<form action="/action_page.php" method="POST" enctype="multipart/form-data">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit" value="Upload">
+</form>

@@ -1,0 +1,18 @@
+<h1>List of skills</h1>
+
+{{#each skills}}
+    <section class="skills">
+        <p>
+            Your skill: {{this.title}} <br />
+            Category: {{this.category.type}} <br />
+            Location :  {{this.location}}
+            <a href="/skills/{{this._id}}/edit">Edit</a>
+        </p>
+        <img src="{{this.myFile}}">
+        
+        <form action="/skills/{{_id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
+
+    </section>
+{{/each}}
