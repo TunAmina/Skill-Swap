@@ -37,13 +37,14 @@ Skills Genre:
 
 
 WHAT SHOULD WE DO : 
-- [ x] Create Models =>  User and Skills
+- [x] Create Models =>  User and Skills
  title:   category: {type: String, enum : ["lifestyle", "technical" , "soft" ] } photoUrl: location: String,
-- [ ] Routes
-- [ ] Views 
-- [ ] Homepage
+- [x] Routes
+- [x] Views 
+- [x] Homepage
 - [ ] User Account Page
-- [ ] Sign Up 
-- [ ] Login 
+- [x] Sign Up 
+- [x] Login 
 - [ ] Add Google Maps location
+- [ ] Upload img and send to cloudinary 
  
