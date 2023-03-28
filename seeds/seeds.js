@@ -26,7 +26,7 @@ const skills = [
     {
         title: "Cooking ",
         category:"Lifestyle",
-       photoURL: "https://res.cloudinary.com/dv9yubte7/image/upload/v1679947111/cooking.webp",
+       photoURL: "https://res.cloudinary.com/dv9yubte7/image/upload/v1679946672/cld-sample-4.jpg",
        location: "Paris"
     }
 ];

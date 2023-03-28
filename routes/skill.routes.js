@@ -32,7 +32,7 @@ router.post("/skills", (req, res, next) =>{
 
     const skillDetails = {
         title: req.body.title,
-        category: req.body.category.type,
+        category: req.body.category,
         photoURL: req.body.photoURL,
         location: req.body.location
     } 
