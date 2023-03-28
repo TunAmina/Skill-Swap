@@ -27,15 +27,20 @@ router.get("/skills/create", (req, res, next) => {
 });
 
 
-//CREATE: process form
-router.post("/skills", (req, res, next) =>{
+// Import the isLoggedIn middleware to protect routes
+const isLoggedIn = require('../middleware/isLoggedIn');
 
+
+// CREATE: process form
+router.post("/skills", isLoggedIn, (req, res, next) =>{
+    console.log(req.session.currentUser)
     const skillDetails = {
         title: req.body.title,
         category: req.body.category,
         photoURL: req.body.photoURL,
-        location: req.body.location
-    } 
+        location: req.body.location,
+        creator: req.session.currentUser // Store the creator's ID
+    }
 
     Skill.create(skillDetails)
      .then(skillFromDB => {
@@ -69,40 +74,71 @@ router.get("/skills/:skillId", (req, res, next) => {
 
 
 //UPDATE: display form
-router.get('skills/:skillId/edit', (req, res, next) =>{
+router.get('/skills/:skillId/edit', isLoggedIn, (req, res, next) => {
     const { skillId } = req.params;
-
-    skill.findById(skillId)
-     .then(skillToEdit => {
+  
+    Skill.findById(skillId)
+      .then(skillToEdit => {
+        if (String(skillToEdit.creator) != String(req.session.currentUser._id)) {
+          // If the user is not the creator, do not allow editing
+          return res.status(401).send('Unauthorized: Only the creator can edit this skill.');
+        }
+  
+        // If the user is the creator, display the edit form
         res.render('skills/skill-edit.hbs', { skill: skillToEdit });
-     })
-     .catch(error => next(error));
-});
-
+      })
+      .catch(error => next(error));
+  });
+  
 
 
 //UPDATE: process form
-router.post('/skills/:skillId/edit', (req, res, next) => {
+router.post('/skills/:skillId/edit', isLoggedIn, (req, res, next) => {
     const { skillId } = req.params;
-    const { title, category, photoURL, location} = req.body;
+    const { title, category, photoURL, location } = req.body;
   
-    skill.findByIdAndUpdate(skillId, { title, category, photoURL, location }, { new: true })
-      .then(updatedSkill => {
-        res.redirect(`/skills/${updatedSkill.id}`); //redirect to book details page
+    Skill.findById(skillId)
+      .then(skillToUpdate => {
+        if (String(skillToUpdate.creator) != String(req.session.currentUser._id)) {
+          // If the user is not the creator, do not allow updating
+          return res.status(401).send('Unauthorized: Only the creator can update this skill.');
+        } 
+  
+        // If the user is the creator, proceed with the update
+        Skill.findByIdAndUpdate(skillId, { title, category, photoURL, location }, { new: true })
+          .then(updatedSkill => {
+            res.redirect(`/skills/${updatedSkill.id}`); //redirect to skill details page
+          })
+          .catch(error => next(error));
       })
       .catch(error => next(error));
   });
   
   
   
+  
   //DELETE
-  router.post('/skills/:skillId/delete', (req, res, next) => {
+router.post('/skills/:skillId/delete', isLoggedIn, (req, res, next) => {
     const { skillId } = req.params;
   
-    skill.findByIdAndDelete(skillId)
-      .then(() => res.redirect('/skills'))
+    Skill.findById(skillId)
+      .then(skill => {
+        console.log('Skill: ' + skill)
+        console.log(req.session)
+        if (String(skill.creator) != String(req.session.currentUser._id)) {
+          // If the user is not the creator, do not allow deletion
+          return res.status(401).send('Unauthorized: Only the creator can delete this skill.');
+        } else{
+            // If the user is the creator, proceed with the deletion
+            skill.deleteOne()
+              .then(() => res.redirect('/skills'))
+              .catch(error => next(error));
+        }
+
+      })
       .catch(error => next(error));
-  });
+});
+
   
   
   
