@@ -2,6 +2,16 @@
 const { Schema, model } = require("mongoose");
 const User = require("./User.model");
 
+
+
+const commentSchema = new Schema({
+    user: { type: Schema.Types.ObjectId, 
+            ref: 'User' },
+    text: String,
+  });
+
+
+
 const skillSchema = new Schema ({
     title: String,
     category : {
@@ -15,9 +25,12 @@ const skillSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    }
-   
+    },
+    comments: [commentSchema],
+    likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 });
+
+
 
 const Skill = model("Skill", skillSchema);
 

@@ -11,9 +11,30 @@
         </p>
         <img src="{{this.photoURL}}">
         
-        <form action="/skills/{{_id}}/delete" method="POST">
+        <form action="/skills/{{this._id}}/delete" method="POST">
             <button>Delete</button>
         </form>
+        
+        <!-- Comment form -->
+        <form method="POST" action="/skills/{{this._id}}/comment">
+          <input type="text" name="text" placeholder="Add a comment">
+          <button type="submit">Submit Comment</button>
+        </form>
 
+        <!-- Like button -->
+        <form method="POST" action="/skills/{{this._id}}/like">
+          <button type="submit">Like</button>
+        </form>
+        
+        <!-- Display number of likes -->
+        <p>Likes: {{this.likes.length}}</p>
+        
+        <!-- Display comments -->
+        <h3>Comments:</h3>
+        <ul>
+          {{#each this.comments}}
+            <li>{{this.text}} - by {{this.user.username}}</li>
+          {{/each}}
+        </ul>
     </section>
 {{/each}}

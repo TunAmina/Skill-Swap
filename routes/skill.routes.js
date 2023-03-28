@@ -4,21 +4,28 @@ const fileUploader = require('../config/cloudinary.config');
 const router = express.Router();
 const isLoggedIn = require('../middleware/isLoggedIn');// Import the isLoggedIn middleware to protect routes
 
-//skill list:
-router.get("/skills", (req, res, next) => {
-    Skill.find()
-        .then(skillsArr =>{
-            const data = {
-                skills: skillsArr
-            };
 
-            res.render("skills/skill-list", data);
-        })
-        .catch(e =>{
-            console.log("error showing skills from DB", e);
-            next(e);
-        });
+
+// skill list:
+router.get("/skills", (req, res, next) => {
+  Skill.find()
+      .populate({
+        path: 'comments.user',
+        model: 'User'
+      })
+      .then(skillsArr =>{
+          const data = {
+              skills: skillsArr
+          };
+
+          res.render("skills/skill-list", data);
+      })
+      .catch(e =>{
+          console.log("error showing skills from DB", e);
+          next(e);
+      });
 });
+
 
 
 //CREATE: display form
@@ -36,7 +43,7 @@ router.post("/skills", isLoggedIn, fileUploader.single('skill-image'),(req, res,
     const skillDetails = {
         title: req.body.title,
         category: req.body.category,
-        photoURL: req.file.path,
+        photoURL: req.file ? req.file.path : '',
         location: req.body.location,
         creator: req.session.currentUser, // Store the creator's ID
         description: req.body.description,
@@ -62,6 +69,10 @@ router.get("/skills/:skillId", (req, res, next) => {
     const { skillId } = req.params;
 
     Skill.findById(skillId)
+    .populate({
+        path: 'comments.user',
+        model: 'User'
+    })
         .then(skillDetails => {
             res.render("skills/skill-details", skillDetails);
         })
@@ -138,6 +149,37 @@ router.post('/skills/:skillId/delete', isLoggedIn, (req, res, next) => {
       })
       .catch(error => next(error));
 });
+
+
+// Add a comment:
+router.post('/skills/:skillId/comment', (req, res, next) => {
+  const { skillId } = req.params;
+  const { text } = req.body;
+  const user = req.session.currentUser._id; // 
+
+  const newComment = {
+    user,
+    text,
+  };
+
+  Skill.findByIdAndUpdate(skillId, { $push: { comments: newComment } }, { new: true })
+    .then((updatedSkill) => {
+      res.redirect(`/skills`);
+    })
+    .catch((error) => next(error));
+});
+
+// Add a like:
+router.post('/skills/:skillId/like', (req, res, next) => {
+  const { skillId } = req.params;
+  const user = req.session.currentUser._id; // 
+  Skill.findByIdAndUpdate(skillId, { $addToSet: { likes: user } }, { new: true })
+    .then((updatedSkill) => {
+      res.redirect(`/skills`);
+    })
+    .catch((error) => next(error));
+});
+
 
   
   
