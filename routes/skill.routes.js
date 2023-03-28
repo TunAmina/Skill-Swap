@@ -1,7 +1,6 @@
 const express = require('express');
 const Skill = require('../models/Skill.model');
-
-
+const fileUploader = require('../config/cloudinary.config');
 const router = express.Router();
 
 //skill list:
@@ -32,12 +31,12 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 
 // CREATE: process form
-router.post("/skills", isLoggedIn, (req, res, next) =>{
+router.post("/skills", isLoggedIn, fileUploader.single('skill-image'),(req, res, next) =>{
     console.log(req.session.currentUser)
     const skillDetails = {
         title: req.body.title,
         category: req.body.category,
-        photoURL: req.body.photoURL,
+        photoURL: req.file.path,
         location: req.body.location,
         creator: req.session.currentUser, // Store the creator's ID
         description: req.body.description,

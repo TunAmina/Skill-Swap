@@ -1,6 +1,6 @@
 <h2>Create your skill</h2>
 
-<form method="POST" action="/skills"  id="create-skill-form">
+<form method="POST" action="/skills"  id="create-skill-form" enctype="multipart/form-data">
 
    <label> Type your skill:
         <input type="text" name="title" />
@@ -24,14 +24,17 @@
   <textarea name="description" id="description" rows="4" cols="50" required></textarea>
 </label> 
 
-<br>
+<div>
+<label for=""> Upload a photo:
+  <input type="file" name="skill-image">
 
-Upload a photo:
-  <input type="file" id="{{this.photoURL}}" name="photoURL">
-  <br>
+</label>
+
+
 
  <input type="submit" value="Create">
 
+</div>
 
 
 </form>
