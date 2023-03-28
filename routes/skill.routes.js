@@ -39,7 +39,8 @@ router.post("/skills", isLoggedIn, (req, res, next) =>{
         category: req.body.category,
         photoURL: req.body.photoURL,
         location: req.body.location,
-        creator: req.session.currentUser // Store the creator's ID
+        creator: req.session.currentUser, // Store the creator's ID
+        description: req.body.description,
     }
 
     Skill.create(skillDetails)
@@ -95,7 +96,7 @@ router.get('/skills/:skillId/edit', isLoggedIn, (req, res, next) => {
 //UPDATE: process form
 router.post('/skills/:skillId/edit', isLoggedIn, (req, res, next) => {
     const { skillId } = req.params;
-    const { title, category, photoURL, location } = req.body;
+    const { title, category, photoURL, location, description } = req.body;
   
     Skill.findById(skillId)
       .then(skillToUpdate => {
@@ -105,7 +106,7 @@ router.post('/skills/:skillId/edit', isLoggedIn, (req, res, next) => {
         } 
   
         // If the user is the creator, proceed with the update
-        Skill.findByIdAndUpdate(skillId, { title, category, photoURL, location }, { new: true })
+        Skill.findByIdAndUpdate(skillId, { title, category, photoURL, location, description }, { new: true })
           .then(updatedSkill => {
             res.redirect(`/skills/${updatedSkill.id}`); //redirect to skill details page
           })

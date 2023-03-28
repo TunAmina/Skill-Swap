@@ -6,16 +6,22 @@
   </label>
 
   <label> Category:
-    <select name="category">
-      {{#each categories}}
-        <option value={{this._id}}>{{this.type}}</option>
-      {{/each}}
-    </select>
+     <select name="category">
+    <option value="Creative">Creative</option>
+    <option value="Technical">Technical</option>
+    <option value="Communication">Communication</option>
+    <option value="Lifestyle">Lifestyle</option>
+    <option value="Professional">Professional</option>
+  </select>
   </label>
 
   <label> Location:
     <input type="text" name="location" value="{{skill.location}}" />
   </label>
+
+  <label for="description"> Description:
+  <textarea name="description" id="description" rows="4" cols="50" required>{{skill.description}}</textarea>
+</label>
 
   <button>Save changes</button>
 </form>

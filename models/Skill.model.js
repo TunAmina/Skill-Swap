@@ -10,11 +10,13 @@ const skillSchema = new Schema ({
     },
     photoURL: String,
     location : String,
+    description: String,
     creator: { // Add the creator field
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }
+   
 });
 
 const Skill = model("Skill", skillSchema);
