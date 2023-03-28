@@ -32,9 +32,11 @@
               <a class="nav-link" href="/auth/login">Login</a></li>
 
           </ul>
+         {{!#if isLoggedIn }} 
           <form class="d-flex" method="POST" action="/auth/logout">
             <button>Logout</button>
           </form>
+          {{!/if}}
         </div>
       </div>
     </nav>
