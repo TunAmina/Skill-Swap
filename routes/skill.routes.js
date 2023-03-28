@@ -2,6 +2,7 @@ const express = require('express');
 const Skill = require('../models/Skill.model');
 const fileUploader = require('../config/cloudinary.config');
 const router = express.Router();
+const isLoggedIn = require('../middleware/isLoggedIn');// Import the isLoggedIn middleware to protect routes
 
 //skill list:
 router.get("/skills", (req, res, next) => {
@@ -21,13 +22,12 @@ router.get("/skills", (req, res, next) => {
 
 
 //CREATE: display form
-router.get("/skills/create", (req, res, next) => {
+router.get("/skills/create", isLoggedIn,(req, res, next) => {
     res.render("skills/skill-create");
 });
 
 
-// Import the isLoggedIn middleware to protect routes
-const isLoggedIn = require('../middleware/isLoggedIn');
+
 
 
 // CREATE: process form
