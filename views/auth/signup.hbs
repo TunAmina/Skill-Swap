@@ -14,8 +14,11 @@
       <input type="password" name="password" placeholder="Your password" />
     </label>
 
-    <button type="submit">Sign Up</button>
+    <button type="submit">Create an account</button>
 
+ <div class="info">
+        <p>Already have an account? Click <a href="/auth/login">here</a> to login.</p>
+    </div>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>

@@ -3,8 +3,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-img {
-  width: 200px;
-  height: auto;
+
+  img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 

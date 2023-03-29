@@ -87,6 +87,7 @@ router.get("/auth/login", isLoggedOut, (req, res) => {
 
 // POST /auth/login
 router.post("/auth/login", isLoggedOut, (req, res, next) => {
+  console.log(req.body.email)
   const { username, email, password } = req.body;
 
   // Check that username, email, and password are provided
