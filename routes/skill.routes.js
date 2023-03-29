@@ -16,18 +16,19 @@ router.get("/skills", (req, res, next) => {
                 skills: skillsArr
             };
 
-            res.render("skills/skill-list", data);
+            res.render("skills/skill-list",data);
         })
         .catch(e =>{
             console.log("error showing skills from DB", e);
             next(e);
         });
+        
 });
 
 
 //CREATE: display form
 router.get("/skills/create", isLoggedIn,(req, res, next) => {
-    res.render("skills/skill-create");
+    res.render("skills/skill-create",{isLoggedIn: req.session.currentUser});
 });
 
 
@@ -135,7 +136,7 @@ router.post('/skills/:skillId/delete', isLoggedIn, (req, res, next) => {
         } else{
             // If the user is the creator, proceed with the deletion
             skill.deleteOne()
-              .then(() => res.redirect('/skills'))
+              .then(() => res.redirect('/skills',))
               .catch(error => next(error));
         }
 
