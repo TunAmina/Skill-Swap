@@ -26,17 +26,21 @@
               <a class="nav-link" href="/skills">Skills</a></li>
             <li class="nav-item">
               <a class="nav-link" href="/skills/create">Create a skill</a></li>
-            <li class="nav-item">
+            
+         
+         {{#if isLoggedIn }} 
+          <form class="d-flex" method="POST" action="/auth/logout">
+            <button>Logout</button>
+          </form>
+
+           {{else}} 
+           <li class="nav-item">
               <a class="nav-link" href="/auth/signup">Sign Up</a></li>
             <li class="nav-item">
               <a class="nav-link" href="/auth/login">Login</a></li>
 
-          </ul>
-         {{!#if isLoggedIn }}    {{!else}}
-          <form class="d-flex" method="POST" action="/auth/logout">
-            <button>Logout</button>
-          </form>
-          {{!/if}}
+          {{/if}}
+           </ul>
         </div>
       </div>
     </nav>
