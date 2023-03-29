@@ -7,6 +7,10 @@ const isLoggedIn = require('../middleware/isLoggedIn');// Import the isLoggedIn 
 //skill list:
 router.get("/skills", (req, res, next) => {
     Skill.find()
+    .populate({
+      path: 'comments.user',
+      model: 'User'
+    })
         .then(skillsArr =>{
             const data = {
                 skills: skillsArr
@@ -139,7 +143,35 @@ router.post('/skills/:skillId/delete', isLoggedIn, (req, res, next) => {
       .catch(error => next(error));
 });
 
-  
-  
+// Add a comment:
+router.post('/skills/:skillId/comment', (req, res, next) => {
+  const { skillId } = req.params;
+  const { text } = req.body;
+  const user = req.session.currentUser._id; // 
+
+  const newComment = {
+    user,
+    text,
+  };
+
+  Skill.findByIdAndUpdate(skillId, { $push: { comments: newComment } }, { new: true })
+    .then((updatedSkill) => {
+      res.redirect(`/skills`);
+    })
+    .catch((error) => next(error));
+});
+
+// Add a like:
+router.post('/skills/:skillId/like', (req, res, next) => {
+  const { skillId } = req.params;
+  const user = req.session.currentUser._id; // 
+  Skill.findByIdAndUpdate(skillId, { $addToSet: { likes: user } }, { new: true })
+    .then((updatedSkill) => {
+      res.redirect(`/skills`);
+    })
+    .catch((error) => next(error));
+});
+
+
   
   module.exports = router;
