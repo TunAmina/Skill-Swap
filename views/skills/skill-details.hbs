@@ -1,12 +1,35 @@
-<section class="skill-details">
-    <h2>{{this.title}}</h2>
-    <p>
-        Category: {{this.category}} <br />
-        Location: {{this.location}} <br />
-        Description: {{this.description}} <br />
-    </p>
-       <img src="{{this.photoURL}}">
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-12">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <h4 class="mt-1 mb-5 pb-1">{{this.title}}</h4>
+                </div>
+
+                <p>
+                  <strong>Category:</strong> {{this.category}} <br />
+                  <strong>Location:</strong> {{this.location}} <br />
+                  <strong>Description:</strong> {{this.description}} <br />
+                </p>
+                <div class="text-center">
+                  <img src="{{this.photoURL}}" class="img-fluid" style="max-width: 70%; height: auto;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <a href="/skills" class="btn btn-primary mt-3">Back</a>
+      </div>
+    </div>
+  </div>
 </section>
-
-<a href="/skills">Back</a>
-

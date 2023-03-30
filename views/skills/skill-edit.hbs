@@ -1,32 +1,57 @@
-<h2>Edit the skill: {{skill.title}}</h2>
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-12">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <h4 class="mt-1 mb-5 pb-1">Edit the skill: {{skill.title}}</h4>
+                </div>
 
-<form action="/skills/{{skill._id}}/edit" method="post">
-  <label> Title:
-    <input type="text" name="title" value="{{skill.title}}" />
-  </label>
+                <form action="/skills/{{skill._id}}/edit" method="post">
+                  <div class="form-outline mb-4">
+                    <input type="text" name="title" class="form-control" value="{{skill.title}}" />
+                    <label class="form-label">Title</label>
+                  </div>
 
-  <label> Category:
-     <select class="form-select" aria-label="Default select example" name="category">
-    <option value="Creative">Creative</option>
-    <option value="Technical">Technical</option>
-    <option value="Communication">Communication</option>
-    <option value="Lifestyle">Lifestyle</option>
-    <option value="Professional">Professional</option>
-  </select>
-  </label>
+                  <div class="form-outline mb-4">
+                    <select class="form-select" aria-label="Default select example" name="category">
+                      <option value="Creative">Creative</option>
+                      <option value="Technical">Technical</option>
+                      <option value="Communication">Communication</option>
+                      <option value="Lifestyle">Lifestyle</option>
+                      <option value="Professional">Professional</option>
+                    </select>
+                    <label class="form-label">Category</label>
+                  </div>
 
-  <label> Location:
-    <input type="text" name="location" value="{{skill.location}}" />
-  </label>
+                  <div class="form-outline mb-4">
+                    <input type="text" name="location" class="form-control" value="{{skill.location}}" />
+                    <label class="form-label">Location</label>
+                  </div>
 
-  <label for="description"> Description:
-  <textarea name="description" id="description" rows="4" cols="50" required>{{skill.description}}</textarea>
-</label>
+                  <div class="form-outline mb-4">
+                    <textarea name="description" class="form-control" id="description" rows="4" cols="50" required>{{skill.description}}</textarea>
+                    <label class="form-label">Description</label>
+                  </div>
 
-  <button>Save changes</button>
-</form>
+                  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Save changes</button>
+                </form>
 
-<form action="/action_page.php" method="POST" enctype="multipart/form-data">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit" value="Upload">
-</form>
+                <form action="/action_page.php" method="POST" enctype="multipart/form-data" class="mb-4">
+                  <div class="form-outline">
+                    <input type="file" id="myFile" name="filename" class="form-control">
+                  </div>
+                  <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mt-3" type="submit" value="Upload">
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
