@@ -173,8 +173,20 @@ router.post('/skills/:skillId/comment', (req, res, next) => {
 // Add a like:
 router.post('/skills/:skillId/like', (req, res, next) => {
   const { skillId } = req.params;
-  const user = req.session.currentUser._id; // 
-  Skill.findByIdAndUpdate(skillId, { $addToSet: { likes: user } }, { new: true })
+  const user = req.session.currentUser; // 
+
+  if (!user) {
+    // Redirect user to login page if not logged in
+    res.redirect("/auth/signup");
+    return;
+  }
+
+
+  const newLikes = {
+    user:user._id,
+    text,
+  };
+  Skill.findByIdAndUpdate(skillId, { $addToSet: { likes: newLikes } }, { new: true })
     .then((updatedSkill) => {
       res.redirect(`/skills`);
     })
