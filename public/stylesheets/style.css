@@ -68,3 +68,7 @@ div [class^="col-"]{
   text-decoration: none;
   color: black;
 }
+
+.create-skill-text {
+  color: #333;
+}

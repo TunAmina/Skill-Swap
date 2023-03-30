@@ -1,37 +1,63 @@
-<h2>Create your skill</h2>
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <h4 class="mt-1 mb-5 pb-1">Create your skill</h4>
+                </div>
 
-<form method="POST" action="/skills" id="create-skill-form" enctype="multipart/form-data">
-  <label>
-    Type your skill:
-    <input type="text" name="title" required />
-  </label>
+          
 
-  <label>
-    Choose a category:
-    <select name="category" required>
-      <option value="Creative">Creative</option>
-      <option value="Technical">Technical</option>
-      <option value="Communication">Communication</option>
-      <option value="Lifestyle">Lifestyle</option>
-      <option value="Professional">Professional</option>
-    </select>
-  </label>
 
-  <label>
-    Your Location:
-    <input type="text" name="location" required />
-  </label>
+                <form method="POST" action="/skills" id="create-skill-form" enctype="multipart/form-data">
+                  <div class="form-outline mb-4">
+                    <label class="form-label">Skill</label>
+                    <input type="text" name="title" class="form-control" placeholder="Type your skill" required />
+                  </div>
 
-  <label for="description">
-    Description:
-    <textarea name="description" id="description" rows="4" cols="50" required></textarea>
-  </label>
+                  <div class="form-outline mb-4">
+                    <label class="form-label">Category</label>
+                    <select name="category" class="form-control" required>
+                      <option value="Creative">Creative</option>
+                      <option value="Technical">Technical</option>
+                      <option value="Communication">Communication</option>
+                      <option value="Lifestyle">Lifestyle</option>
+                      <option value="Professional">Professional</option>
+                    </select>
+                  </div>
 
-  <div>
-    <label for="">
-      Upload a photo:
-      <input type="file" name="skill-image" required>
-    </label>
-    <input type="submit" value="Create">
+                  <div class="form-outline mb-4">
+                    <label class="form-label">Location</label>
+                    <input type="text" name="location" class="form-control" placeholder="Your location" required />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" class="form-control" rows="4" placeholder="Description" required></textarea>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label">Upload a photo</label>
+                    <input type="file" name="skill-image" class="form-control" required>
+                  </div>
+
+                  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Create</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class=" px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">Share your skills with the community</h4>
+                <p class="small mb-0">Showcase your skills and talents, connect with like-minded people, and learn from others. Together, we can grow and contribute to a vibrant and diverse community.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</form>
+</section>

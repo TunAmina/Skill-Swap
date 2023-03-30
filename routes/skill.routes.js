@@ -149,10 +149,17 @@ router.post('/skills/:skillId/delete', isLoggedIn, (req, res, next) => {
 router.post('/skills/:skillId/comment', (req, res, next) => {
   const { skillId } = req.params;
   const { text } = req.body;
-  const user = req.session.currentUser._id; // 
+  const user = req.session.currentUser;
+
+  if (!user) {
+    // Redirect user to login page if not logged in
+    res.redirect("/auth/signup");
+    return;
+  }
+
 
   const newComment = {
-    user,
+    user:user._id,
     text,
   };
 
