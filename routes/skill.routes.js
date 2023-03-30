@@ -45,7 +45,7 @@ router.post("/skills", isLoggedIn, fileUploader.single('skill-image'),(req, res,
         photoURL: req.file.path,
         location: req.body.location,
         creator: req.session.currentUser, // Store the creator's ID
-        description: req.body.description,
+        description: req.body.description
     }
 
     Skill.create(skillDetails)
@@ -181,12 +181,9 @@ router.post('/skills/:skillId/like', (req, res, next) => {
     return;
   }
 
-
-  const newLikes = {
-    user:user._id,
-    text,
-  };
-  Skill.findByIdAndUpdate(skillId, { $addToSet: { likes: newLikes } }, { new: true })
+  console.log(user)
+ 
+  Skill.findByIdAndUpdate(skillId, { $addToSet: { likes: user._id} }, { new: true })
     .then((updatedSkill) => {
       res.redirect(`/skills`);
     })

@@ -1,26 +1,26 @@
 <div class="container ">
-  <h1 class="text-center mt-3 mb-3">List of skills</h1>
+  <h1 class="text-center mt-3 mb-3">Skill Swap Community</h1>
   <hr>
 
   <div class="row">
     {{#each skills}}
       <div class="col-sm-4 ">
-        <div class="card p-2 m-3 list-card">
+        <div class="card-main border p-2 m-3 list-card">
           <h3 class="card-title text-center" aria-required="true">{{this.title}}</h3>
           <img class ="mb-5" src="{{this.photoURL}}"  />
-          <h6 class="card-subtitle mb-2 text-body-secondary text-center"> Category: {{this.category}}</h6>
-          <h6 class="card-subtitle mb-2 text-body-secondary text-center"> Location :{{this.location}}</h6>
+          <h5 class="card-subtitle mb-2 text-body-secondary text-center"> Category: {{this.category}}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary text-center"> <i class="bi bi-geo-alt"></i> Location :{{this.location}}</h6>
           <p class="card-text text-center" aria-required="true"> Description: {{this.description}} </p>
 
           <!-- Comment form -->
           <form  method="POST" action="/skills/{{this._id}}/comment">
             <input type="text" name="text" placeholder="Add a comment"  class="form-control addtxt" />
-            <button class="btn btn-primary" type="submit">Submit Comment</button>
+            <button class="btn btn-primary btn-sm m-2" type="submit">Submit Comment</button>
           </form>
 
           <!-- Like button -->
           <form method="POST" action="/skills/{{this._id}}/like">
-            <button class="btn bg-danger " type="submit"> <i class='bi bi-heart'></i> Like {{this.likes.length}}</button>
+            <button class="btn bg-danger btn-sm m-2 " type="submit"> <i class='bi bi-heart'></i> Like {{this.likes.length}}</button>
           </form>
 
           <!-- Display comments -->
@@ -34,11 +34,11 @@
           <div class="col d-flex justify-content-center mt-3 mb-3">
             {{#if ../isLoggedIn}} 
               <form action="/skills/{{this._id}}/delete" method="POST">
-                <button  class="btn mr-2 btn-warning"><i class="bi bi-trash"></i> Delete</button>
+                <button  class="btn mr-2 btn-warning btn-sm"><i class="bi bi-trash"></i> Delete</button>
               </form>
 
               <form action="/skills/{{this._id}}/edit" method="GET">
-                <button  class="btn btn-warning"><i class="bi bi-pencil-square"></i> Edit</button>
+                <button  class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Edit</button>
               </form>
             {{/if}}
           </div>
