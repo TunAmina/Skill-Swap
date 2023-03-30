@@ -1,5 +1,5 @@
 <div class="container ">
-<h4>List of skills</h4>
+<h1 class="text-center mt-3 mb-3">List of skills</h1>
 <hr>
 
 
@@ -7,30 +7,28 @@
 
 <div class="row">
 {{#each skills}}
-<div class="col-sm-4">
-        <div class="card">
-            <h4 class="card-title"> Your skill:{{this.title}}</h4>
+<div class="col-sm-4 ">
+        <div class="card p-2 m-3 list-card">
+            <h3 class="card-title text-center">{{this.title}}</h3>
          
+          <img class ="mb-5" src="{{this.photoURL}}"  />
 
-        <!-- Like button -->
-    <form method="POST" action="/skills/{{this._id}}/like">
-      <button class="btn bg-danger" type="submit"> <i class='bi bi-heart'></i> Like {{this.likes.length}}</button>
-    </form>
-
-
-
-
-          <img src="{{this.photoURL}}"  />
-             <h6 class="card-subtitle mb-2 text-body-secondary"> Category: {{this.category}}</h6>
-       <h6 class="card-subtitle mb-2 text-body-secondary"> Location :{{this.location}}</h6>
-       <p class="card-text"> Description: {{this.description}} </p>
+             <h6 class="card-subtitle mb-2 text-body-secondary text-center"> Category: {{this.category}}</h6>
+       <h6 class="card-subtitle mb-2 text-body-secondary text-center"> Location :{{this.location}}</h6>
+       <p class="card-text text-center"> Description: {{this.description}} </p>
           
-    
+   
     <!-- Comment form -->
     <form  method="POST" action="/skills/{{this._id}}/comment">
       <input type="text" name="text" placeholder="Add a comment"  class="form-control addtxt" />
       <button class="btn btn-primary" type="submit">Submit Comment</button>
     </form>
+
+           <!-- Like button -->
+    <form method="POST" action="/skills/{{this._id}}/like">
+      <button class="btn bg-danger " type="submit"> <i class='bi bi-heart'></i> Like {{this.likes.length}}</button>
+    </form>
+
 
     <!-- Display comments -->
     <h5>Comments:</h5>
@@ -40,22 +38,22 @@
       {{/each}}
     </ul>
 
-
+<div class="col d-flex justify-content-center mt-3 mb-3">
     
 {{!--#if isLoggedIn doesn't work yet--}} 
  
       <form action="/skills/{{this._id}}/delete" method="POST">
-        <button  class="btn mr-2 btn-warning"><i class="bi bi-trash"></i>Delete</button>
+        <button  class="btn mr-2 btn-warning"><i class="bi bi-trash"></i> Delete</button>
       </form>
 
 
     <form action="/skills/{{this._id}}/edit" method="GET">
-        <button  class="btn btn-warning"><i class="bi bi-pencil-square"></i>Edit</button>
+        <button  class="btn btn-warning"><i class="bi bi-pencil-square"></i> Edit</button>
       </form>
   
 {{!--/if--}}
 
-
+</div>
 </div>
 </div>
 {{/each}}
