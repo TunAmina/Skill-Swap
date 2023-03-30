@@ -1,40 +1,37 @@
 <h2>Create your skill</h2>
 
-<form method="POST" action="/skills"  id="create-skill-form" enctype="multipart/form-data">
+<form method="POST" action="/skills" id="create-skill-form" enctype="multipart/form-data">
+  <label>
+    Type your skill:
+    <input type="text" name="title" required />
+  </label>
 
-   <label> Type your skill:
-        <input type="text" name="title" />
+  <label>
+    Choose a category:
+    <select name="category" required>
+      <option value="Creative">Creative</option>
+      <option value="Technical">Technical</option>
+      <option value="Communication">Communication</option>
+      <option value="Lifestyle">Lifestyle</option>
+      <option value="Professional">Professional</option>
+    </select>
+  </label>
+
+  <label>
+    Your Location:
+    <input type="text" name="location" required />
+  </label>
+
+  <label for="description">
+    Description:
+    <textarea name="description" id="description" rows="4" cols="50" required></textarea>
+  </label>
+
+  <div>
+    <label for="">
+      Upload a photo:
+      <input type="file" name="skill-image" required>
     </label>
-
-<label> Choose a category:
-   <select name="category">
-    <option value="Creative">Creative</option>
-    <option value="Technical">Technical</option>
-    <option value="Communication">Communication</option>
-    <option value="Lifestyle">Lifestyle</option>
-    <option value="Professional">Professional</option>
-  </select>
-</label>
-
-<label> Your Location:
-   <input type="text" name="location" />
-</label>
-
-<label for="description"> Description:
-  <textarea name="description" id="description" rows="4" cols="50" required></textarea>
-</label> 
-
-<div>
-<label for=""> Upload a photo:
-  <input type="file" name="skill-image">
-
-</label>
-
-
-
- <input type="submit" value="Create">
-
-</div>
-
-
+    <input type="submit" value="Create">
+  </div>
 </form>

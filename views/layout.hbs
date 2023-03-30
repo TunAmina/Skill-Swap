@@ -28,8 +28,8 @@
               <a class="nav-link" href="/skills/create">Create a Skill</a></li>
 
          {{#if isLoggedIn }} 
-          <form class="d-flex" method="POST" action="/auth/logout">
-            <button>Logout</button>
+          <form class="col d-flex justify-item-end" method="POST" action="/auth/logout">
+            <button class="btn">Logout</button>
           </form>
 
            {{else}} 
