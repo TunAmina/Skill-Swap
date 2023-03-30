@@ -13,7 +13,8 @@ router.get("/skills", (req, res, next) => {
     })
         .then(skillsArr =>{
             const data = {
-                skills: skillsArr
+                skills: skillsArr,
+                isLoggedIn: req.session.currentUser,
             };
 
             res.render("skills/skill-list",data);
