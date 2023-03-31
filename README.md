@@ -2,7 +2,7 @@
 A platform where users can exchange skills or services. For example, someone who's good at graphic design could swap their skills with someone who can teach them guitar. Users can create profiles, list their skills, and interact with others through likes and comments to arrange skill exchanges.
 
 
-![alt text](./public/images/ss.png)
+![alt text](./images/Skill-swap.png)
 
 
 #In order to install all dependencies, and then run the application, type the following commands in your console:
