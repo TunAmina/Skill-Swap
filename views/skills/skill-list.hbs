@@ -15,9 +15,9 @@
           <!-- Comment form -->
           <form  method="POST" action="/skills/{{this._id}}/comment">
             <input type="text" name="text" placeholder="Add a comment"  class="form-control addtxt" />
-            <button class="btn btn-primary btn-sm m-2" type="submit">Submit Comment</button>
+            <button class="btn btn-secondary btn-sm m-2" type="submit">Submit Comment</button>
           </form>
-
+           
           <!-- Like button -->
           <form method="POST" action="/skills/{{this._id}}/like">
             <button class="btn bg-danger btn-sm m-2 " type="submit"> <i class='bi bi-heart'></i> Like {{this.likes.length}}</button>
