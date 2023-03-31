@@ -1,4 +1,4 @@
-# Skill-Swap-Project MVP  :heart_eyes:
+# Skill-Swap-Project  :heart_eyes:
 A platform where users can exchange skills or services. For example, someone who's good at graphic design could swap their skills with someone who can teach them guitar. Users can create profiles, list their skills, and interact with others through likes and comments to arrange skill exchanges.
 
 
