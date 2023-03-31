@@ -17,10 +17,15 @@ The images uplouded are stored in Cloudinary, If you want to create an account I
 # Create .env file to store your variables
 
 PORT
+
 SESSION_SECRET
+
 CLOUDINARY_NAME
+
 CLOUDINARY_KEY
+
 CLOUDINARY_SECRET
+
 
 
 Here is the link that you can check our web site :arrow_right:
