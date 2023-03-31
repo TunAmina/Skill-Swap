@@ -10,7 +10,7 @@
           <img class ="mb-5" src="{{this.photoURL}}"  />
           <h5 class="card-subtitle mb-2 text-body-secondary text-center"> Category: {{this.category}}</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary text-center"> <i class="bi bi-geo-alt"></i> Location :{{this.location}}</h6>
-          <p class="card-text text-center" aria-required="true"> Description: {{this.description}} </p>
+          <p class="card-text text-center" aria-required="true"> {{this.description}} </p>
 
           <!-- Comment form -->
           <form  method="POST" action="/skills/{{this._id}}/comment">
